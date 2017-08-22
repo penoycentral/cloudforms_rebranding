@@ -1,0 +1,40 @@
+- name: stop evmserverd
+  service: name=evmserverd state=stopped
+- name: Change tab color
+  replace:
+    dest: /var/www/miq/vmdb/productization/assets/stylesheets/main.scss
+    regexp: '1a1a1a'
+    replace: '003C78'
+    backup: yes
+- name: Remove tab graphics
+  replace:
+    dest: /var/www/miq/vmdb/productization/assets/stylesheets/main.scss
+    regexp: "navbar.png"
+  tags: graphics
+- name: Replace Cloudforms Logo to Company Logo
+  copy:
+    src: custom_logo.png
+    dest: /var/www/miq/vmdb/public/upload/custom_logo.png
+- name: Replace Login background
+  copy:
+    src: background-blue-wave.png
+    dest: /var/www/miq/vmdb/public/upload/custom_login_logo.png
+- name: rake compile assets
+  command: bash -lc "RAILS_ENV=production rake evm:compile_assets >/dev/null"
+  args:
+    chdir: /var/www/miq/vmdb/productization/assets/stylesheets
+- name: restart evmserverd
+  service: name=evmserverd state=restarted
+- name: Change Redhat Cloudforms Management Engine in the login page
+  copy:
+    src: brand.svg
+    dest: /var/www/miq/vmdb/public/assets/layout/brand-769460605155b6f70da48b52e4d1f44ec1f1e478bbd1bff7912d0c38d2198d44.svg
+  tags: logo
+- name: Change to Custom logo in the login screen
+  copy:
+    src: custom_logo.png
+    dest: /var/www/miq/vmdb/public/assets/layout/login-screen-logo-a03a2f98b87bc335d2adf07f0c5a831a77353259f6ae17f167bff2c1e7aaadfe.png
+    owner: root
+    group: root
+    mode: 0644
+  tags: logo
