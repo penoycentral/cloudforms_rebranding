@@ -3,7 +3,7 @@ Role Name
 
 Redhat Cloudforms rebranding Ansible playbook
 
-Tested in Cloudforms 4.5
+Tested working against Cloudforms 4.5
 
 Role Files
 --------------
@@ -13,6 +13,13 @@ files/brand.svg
 
 files/custom_logo.png
   - custom Company Logo
+
+
+Enable Custom Logo and Background
+----------------------------------
+
+Configuration > Settings > Custom Logos(tab)
+
 
 
 Author Information
