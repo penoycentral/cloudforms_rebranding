@@ -14,6 +14,12 @@ files/brand.svg
 files/custom_logo.png
   - custom Company Logo
 
+Variables
+-------------
+
+vars/main.yml
+tabcolor: Cloudforms tabcolor
+
 
 Enable Custom Logo and Background
 ----------------------------------

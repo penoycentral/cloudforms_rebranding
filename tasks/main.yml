@@ -4,7 +4,7 @@
   replace:
     dest: /var/www/miq/vmdb/productization/assets/stylesheets/main.scss
     regexp: '1a1a1a'
-    replace: '003C78'
+    replace: "{{ tabcolor }}"
     backup: yes
 - name: Remove tab graphics
   replace:
